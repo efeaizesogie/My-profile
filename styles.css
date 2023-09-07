@@ -1,10 +1,13 @@
 .profile {
   text-align: center;
   margin: 20px;
+  font-family: "Open Sans", sans-serif;
 }
 
 h1 {
   font-size: 24px;
+  font-weight: 800;
+  color: #333;
 }
 
 img {
@@ -15,6 +18,8 @@ img {
 
 p {
   font-size: 18px;
+  font-family: "Open Sans";
+  font-weight: 400;
 }
 
 a {
