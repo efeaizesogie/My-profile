@@ -1,29 +1,34 @@
-var currentDate = new Date();
+function getCurrentUTCTimeMilliseconds() {
+  return new Date().getTime();
+}
 
-var dateOptions = {
-  day: "numeric",
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-};
+function updateCurrentUTCTimeMilliseconds() {
+  const currentUTCTimeMilliseconds = getCurrentUTCTimeMilliseconds();
 
-var timeOptions = {
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-  timeZoneName: "short",
-};
+  // Update the element with data-testid="currentUTCTime"
+  const currentUTCTimeElement = document.querySelector(
+    '[data-testid="currentUTCTime"]'
+  );
+  currentUTCTimeElement.textContent = currentUTCTimeMilliseconds;
+}
+updateCurrentUTCTimeMilliseconds();
 
-var formattedDate = currentDate.toLocaleDateString("en-US", dateOptions);
-var formattedTime = currentDate.toLocaleTimeString("en-US", timeOptions);
+setInterval(updateCurrentUTCTimeMilliseconds, 100);
+
+currentDate = new Date();
+
+const daysOfWeek = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const currentDayOfWeek = daysOfWeek[currentDate.getUTCDay()];
 
 var currentLocalDateElement = document.querySelector(
   '[data-testid="currentDayOfTheWeek"]'
 );
-
-var currentUTCTimeElement = document.querySelector(
-  '[data-testid="currentUTCTime"]'
-);
-
-currentLocalDateElement.textContent = formattedDate;
-currentUTCTimeElement.textContent = formattedTime;
+currentLocalDateElement.innerHTML = currentDayOfWeek;
